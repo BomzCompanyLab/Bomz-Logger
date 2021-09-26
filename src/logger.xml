@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+		Bomz logger for java
+		Logger ver 1.0
+		
+		Homepage : http://www.bomz.co.kr
+		
+		
+		1. logger setting xml file default position : /logger.xml
+		
+		2. setting xml file monitoring
+			<loggers observer="on"> or <loggers observer="off">
+			
+		3. Bomz system logger name is 'root'
+		
+		4. appender types
+			4.1 console : System.out
+			4.2 file : your disk file
+			4.3 tcp : socket stream send. your system is client
+			4.4 http : http send. method is GET or POST
+			
+		5. level
+			trace < debug < info < warn < error < fatal < off 
+ -->
+<loggers observe="off">
+
+	<!-- 
+		Bomz system logger.
+		appender type is console.
+		
+		exam1) level is debug ~ fatal
+		<logger name="root" type="console" level="debug" />
+		
+		exam2) logger level is only debug
+		<logger name="root" type="console" level="(debug)" />
+		
+		exam3) logger level is debug and warn and fatal
+		<logger name="root" type="console" level="(debug|warn|fatal)" />
+		
+		exam4) logger date print pattern
+					- G : Era designator
+					- y : year
+					- M : month
+					- w : Week in year
+					- W : Week in month
+					- D : Day in year
+					- d : Day in month
+					- F : Day of week in month
+					- E : Day in week
+					- H : hour 0~23
+					- k : hour 1~24
+					- K : hour 0~11
+					- h : hour 1~12
+					- m : minute
+					- s : second
+					- S : millisecond
+					- z : time zone (General)
+					- Z : time zone (RFC 822)
+					- a : am / pm 
+		<logger name="root" type="console" level="info">
+			<param name="date">yyyy-MM-dd HH:mm:ss</param>
+		</logger>
+		
+		exam5) logger date locale.
+					- KOREA : KO
+					- USA : US
+					- JAPAN : JA
+					- CHINA : ZH
+					- FRANCE : FR
+		<logger name="root" type="console" level="info">
+			<param name="date">yy.MM.dd 'AT' a h:mm:ss</param>
+			<param name="locale">US</param>
+		</logger>
+		
+		exam6) logger date time zone.
+					- Asia/Seoul
+					- America/Los_Angeles
+					...
+		<logger name="root" type="console" level="info">
+			<param name="date">[yyyy.MM.dd hh:mm:ss]</param>
+			<param name="locale">US</param>
+			<param name="timeZone">Asia/Seoul</param>
+		</logger>
+	-->
+
+	<!-- 
+		Bomz system logger.
+		appender type is file.
+		parameter size unit is Megabyte.
+		parameter period value is DAY or HOUR
+		
+		exam1) level is warn ~ fatal
+		<logger name="root" type="file" level="warn">
+			<param name="dir">./log/system.log</param>
+			<param name="size">100</param>
+			<param name="period">DAY</param>
+		</logger>
+		
+		exam2) level is only error
+		<logger name="root" type="file" level="(error)">
+			<param name="dir">./log/system_error.log</param>
+		</logger>
+		
+		exam3) date print pattern
+		<logger name="root" type="file" level="(error)">
+			<param name="dir">./log/system_error.log</param>
+			<param name="date">[yyyy-MM-dd HH:mm:ss]</param>
+		</logger>
+	-->
+	
+	
+	<!-- 
+		Bomz system logger.
+		appender type is tcp.
+		your system is client.
+		
+		exam1) level is info ~ fatal
+		<logger name="root" type="tcp" level="info">
+			<param name="ip">127.0.0.1</param>
+			<param name="port">10111</param>
+		</logger>
+		
+		exam2) level is only debug and error
+		<logger name="root" type="tcp" level="(debug|error)">
+			<param name="ip">127.0.0.1</param>
+			<param name="port">10111</param>
+			<param name="stx">[</param>
+			<param name="etx">]</param>
+		</logger>
+		
+		exam3) date print pattern
+		<logger name="root" type="tcp" level="(debug|error)">
+			<param name="ip">127.0.0.1</param>
+			<param name="port">10111</param>
+			<param name="stx">[</param>
+			<param name="etx">]</param>
+			<param name="date">yyyy-MM-dd</param>
+		</logger>
+	-->
+	
+	
+	<!-- 
+		Bomz system logger.
+		appender type is http.
+		your system is client.
+		
+		exam1) level is info ~ fatal
+					default method : GET
+					default parameter id : logMsg
+					default encoding : UTF-8
+					default timeOut : 1500 (unit:ms)
+					result URL : http://www.bomz.co.kr?logmsg=(LOG)
+		<logger name="root" type="http" level="info">
+			<param name="url">http://www.bomz.co.kr</param>
+		</logger>
+		
+		exam2) level is only debug and error
+					default method : GET
+					default timeOut : 1500 (unit:ms)
+					result URL : http://127.0.0.1:8080/servlet?test_log=(LOG)
+		<logger name="root" type="http" level="(debug|error)">
+			<param name="url">http://127.0.0.1:8080/servlet</param>
+			<param name="encoding">EUC-KR</param>
+			<param name="id">test_log</param>
+		</logger>
+		
+		exam3) date print pattern
+		<logger name="root" type="http" level="(debug|error)">
+			<param name="url">http://www.bomz.co.kr</param>
+			<param name="method">POST</param>
+			<param name="timeOut">2000</param>
+			<param name="date">yyyy-MM-dd 'AT' hh:mm:ss</param>
+		</logger>
+		
+		exam4) fast send parameter. use thread pool.
+					but need bomz-util1.x.jar
+					poolUse : blank or true or false
+					poolSize : default 3. max 10
+		<logger name="root" type="http" level="(debug|error)">
+			<param name="url">http://www.bomz.co.kr</param>
+			<param name="method">POST</param>
+			<param name="poolUse">true</param>
+			<param name="poolSize">5</param>
+		</logger>
+	-->
+		
+	<!-- 
+		- java file
+			Logger logger = Logger.getLogger("myLog");
+		
+		- xml file
+		<logger name="myLog" type="console" level="trace" />
+		<logger name="myLog" type="file" level="trace">
+			<param name="dir">./log/my_all_log.log</param>
+			<param name="size">50</param>
+		</logger>
+		<logger name="myLog" type="file" level="error">
+			<param name="dir">./log/my_error_log.log</param>
+		</logger>
+	-->
+	
+	
+	<!-- 
+		- java file
+			package kr.co.bomz;
+			public class MiddlewareSystem{
+				Logger logger = Logger.getLogger(kr.co.bomz.MiddlewareSystem);
+				....
+			}
+		
+		- xml file
+		<logger name="kr.co.bomz.MiddlewareSystem" type="console" level="trace" />
+		or
+		<logger name="kr.co.bomz" type="console" level="trace" />
+	-->
+	
+	
+	<!-- 
+		Your create custom logger
+	
+		- java file1
+			package kr.co.bomz;
+			public class MyCustomAppender extends kr.co.bomz.logging.appender.CustomAppender{
+				...
+			}
+		- java file2
+			public static void main(String[] args){
+				Logger logger = Logger.getLogger("myCustom");
+				logger.debug("my custom logger test");
+				...
+			}	
+		
+		- xml file
+		<logger name="myCustom" type="custom" level="info">
+			<param name="class">kr.co.bomz.MyCustomAppender</param>
+		</logger>
+	-->
+	
+	
+	<!-- 
+		MyBatis or iBatis log
+	
+		- xml file
+		<logger name="org.apache.ibatis" type="console" level="debug" />
+	-->
+</loggers>
