@@ -5,6 +5,10 @@
 자바 기반의 Logger 구현체입니다
 
 
+**Observe**
+   - 로거 설정파일의 변경 여부 실시간 감시
+   - 'on' or 'off'
+
 **Log Level**
    - TRACE
    - DEBUG
