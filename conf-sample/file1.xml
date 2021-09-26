@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<loggers observe="off">
+	<logger name="example.file1" type="console" level="debug"/>
+	
+	<logger name="dayPeriod" type="file" level="trace">
+		<param name="dir">./log/day.log</param>
+		<param name="size">1</param>
+		<param name="period">DAY</param>
+	</logger>
+	
+	<logger name="hourPeriod" type="file" level="(debug|error|fatal)">
+		<param name="dir">./log/hour.log</param>
+		<param name="period">hour</param>
+	</logger>
+</loggers>
