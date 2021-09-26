@@ -5,7 +5,8 @@
 자바 기반의 Logger 구현체입니다
 
 
-> Log Level
+
+**Log Level**
 
    - TRACE
    - DEBUG
@@ -16,7 +17,8 @@
    - OFF
 
 
-> Appender
+
+**Appender**
 
    - Console
       콘솔상에 로그 데이터 출력   
@@ -29,6 +31,13 @@
    - Custom
       사용자가 직접 구현한 구현체로 로그 데이터 처리
 
+
+
+**Date Pattern**
+
+   - 예시)
+      설정 : <pattern name="date">[yyyy.MM.dd hh:mm:ss]</pattern>
+      결과 : [2021.09.26 13:09:20]
 
 
 MIT License
