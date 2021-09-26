@@ -1,0 +1,170 @@
+<body>
+<p>Bomz logger1.0 APIs.</p>
+
+<h3>개요</h3>
+
+<p>
+Bomz 로거는 기존 로거들의 장점을 따르고 단점을 보완하여 조금 더 사용하기 쉽게끔 만들어졌습니다
+</p>
+<p>
+로거 설정 시 하나의 로거명으로 여러 레벨 및 방식의 Appender 를 설정할 수 있으며,
+사용자가 직접 Appender 를 제작하여 원하는 방식의 처리를 수행할 수 있습니다
+</p>
+<p>
+또한 많이 사용되고 있는 MyBatis, Spring, Commons Logging 등과의 연동도 가능합니다
+</p>
+
+<p> </p>
+<h3>기본 사용예제 1</h3>
+<p>
+가장 기본적인 사용법으로 Bomz 시스템 로거는 DEBUG 레벨,
+사용자 로거는 INFO 레벨로 콘솔에 출력합니다
+</p>
+<pre>
+Java Source File..
+
+import kr.co.bomz.logging.Level;
+import kr.co.bomz.logging.Logger;
+
+public class Test1 {
+
+	private static final Logger logger = Logger.getLogger("test");
+	
+	public static void main(String[] args){
+		int age = 21;
+		String addr = "서울특별시 종로구";
+		logger.info("이름은 수피난이고 나이는 ", age, "살 주소는 ", addr, "입니다");
+	}
+}
+</pre>
+<pre>
+/logger.xml File..
+
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE loggers PUBLIC "-//bomz.co.kr//DTD Config 3.0//EN" 
+             "http://www.bomz.co.kr/cmn/bomz-logger1.0.dtd"&gt;
+
+&lt;loggers observe="off"&gt;
+	&lt;logger name="root" type="console" level="debug" /&gt;
+	&lt;logger name="test" type="console" level="info" /&gt;
+&lt;/loggers&gt;
+</pre>
+
+<p> </p>
+<h3>기본 사용예제 2</h3>
+<p>하나의 로거명으로 레벨에 따라 2개의 파일로 분리하여 아래와같이 저장합니다</p>
+<p>a.log file : DEBUG 이상의 모든 로그를 저장</p>
+<p>b.log file : INFO 와 ERROR 만 저장</p>
+<pre>
+Java Source File..
+
+import kr.co.bomz.logging.Level;
+import kr.co.bomz.logging.Logger;
+
+public class Test2 {
+
+	private static final Logger logger = Logger.getLogger("test");
+	
+	public static void main(String[] args){
+		logger.trace("trace level log");
+		logger.debug("debug level log");
+		logger.info("info level log");
+		logger.warn("warn level log");
+		logger.error("error level log");
+		logger.fatal("fatal level log");
+	}
+}
+</pre>
+<pre>
+/logger.xml File..
+
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE loggers PUBLIC "-//bomz.co.kr//DTD Config 3.0//EN" 
+             "http://www.bomz.co.kr/cmn/bomz-logger1.0.dtd"&gt;
+
+&lt;loggers observe="off"&gt;
+	&lt;logger name="test" type="file" level="debug"&gt;
+		&lt;param name="dir"&gt;./a.log&lt;/param&gt;
+	&lt;/logger&gt;
+	&lt;logger name="test" type="file" level="(info|error)"&gt;
+		&lt;param name="dir"&gt;./b.log&lt;/param&gt;
+	&lt;/logger&gt;
+&lt;/loggers&gt;
+</pre>
+
+
+<p> </p>
+<h3>기본 사용예제 3</h3>
+<p>로그 내용을 파일로 출력할 경우 아래와 같은 설정값을 사용할 수 있습니다</p>
+<p>dir : 파일의 경로 및 이름 선언</p>
+<p>size : 파일의 최대 크기 선언. 단위(MB)</p>
+<p>period : 파일의 사용 기간. 'hour' or 'day' 값 사용 가능</p> 
+<pre>
+/logger.xml File..
+
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE loggers PUBLIC "-//bomz.co.kr//DTD Config 3.0//EN" 
+             "http://www.bomz.co.kr/cmn/bomz-logger1.0.dtd"&gt;
+
+&lt;loggers observe="off"&gt;
+	&lt;logger name="test" type="file" level="debug"&gt;
+		&lt;param name="dir"&gt;./a.log&lt;/param&gt;
+		&lt;param name="size"&gt;3&lt;/param&gt;
+		&lt;param name="period"&gt;hour&lt;/param&gt;
+	&lt;/logger&gt;
+	&lt;logger name="test" type="file" level="(info|error)"&gt;
+		&lt;param name="dir"&gt;./b.log&lt;/param&gt;
+		&lt;param name="period"&gt;day&lt;/param&gt;
+	&lt;/logger&gt;
+&lt;/loggers&gt;
+</pre>
+
+
+
+<p> </p>
+<h3>기본 사용예제 4</h3>
+<p>로그 내용을 TCP/IP 방식으로 외부 소켓서버에 전송할 수 있습니다</p>
+<p>ip : 전송할 서버의 아이피</p>
+<p>port : 전송할 서버의 포트</p>
+<p>stx : 데이터의 시작을 표시할 문자(생략가능)</p>
+<p>etx : 데이터의 종료를 표시할 문자(생략가능)</p> 
+<pre>
+/logger.xml File..
+
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE loggers PUBLIC "-//bomz.co.kr//DTD Config 3.0//EN" 
+             "http://www.bomz.co.kr/cmn/bomz-logger1.0.dtd"&gt;
+
+&lt;loggers observe="off"&gt;
+	&lt;logger name="test" type="tcp" level="debug"&gt;
+		&lt;param name="ip"&gt;127.001.002.003&lt;/param&gt;
+		&lt;param name="port"&gt;9099&lt;/param&gt;
+	&lt;/logger&gt;
+	&lt;logger name="test" type="file" level="(info|error)"&gt;
+		&lt;param name="port"&gt;127.001.111.222&lt;/param&gt;
+		&lt;param name="port"&gt;10111&lt;/param&gt;
+		&lt;param name="sxt"&gt;[@&lt;/param&gt;
+		&lt;param name="ext"&gt;@]&lt;/param&gt;
+	&lt;/logger&gt;
+&lt;/loggers&gt;
+</pre>
+
+
+
+<p> </p>
+<h3>기본 사용예제 5</h3>
+<p>프로그램 동작 중에도 로그설정 내용의 변경사항을 실시간으로 적용할 수 있습니다</p>
+<p>observe 속성 값을 'off' 로 변경 후에는 다시 'on' 으로 변경해도 실시간 적용이 되지 않습니다</p>
+<pre>
+/logger.xml File..
+
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE loggers PUBLIC "-//bomz.co.kr//DTD Config 3.0//EN" 
+             "http://www.bomz.co.kr/cmn/bomz-logger1.0.dtd"&gt;
+
+&lt;loggers observe="on"&gt;
+	...
+&lt;/loggers&gt;
+</pre>
+
+</body>
