@@ -18,15 +18,16 @@
 
 > Appender
 
+   - Console
+      콘솔상에 로그 데이터 출력   
    - File
-      로그 내용을 파일로 저장하며 시간/일 단위로 로그 파일 분할 저장 및 파일당 최대 크기를 지정할 수 있습니다
-`<logger name="root" type="file" level="warn"><br>`
-`    <pattern name="dir">./log/my.log</pattern>`
-`    <pattern name="size">50</pattern>`
-`    <pattern name="period">(DAY | HOUR)</pattern>`
-`</logger>`
-
-
+      로그 내용을 파일로 저장하며 시간/일 단위로 로그 파일 분할 저장 및 파일당 최대 크기를 지정 가능
+   - TCP
+      설정된 IP:PORT 로 접속하여 TCP 방식으로 로그 데이터 전송
+   - Http 
+      지정된 URL 과 Http Method 방식으로 접속하여 로그 데이터 전송
+   - Custom
+      사용자가 직접 구현한 구현체로 로그 데이터 처리
 
 
 
