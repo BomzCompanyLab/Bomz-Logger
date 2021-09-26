@@ -17,7 +17,6 @@
 
 
 **Appender**
-
    - Console
       - 콘솔상에 로그 데이터 출력   
    - File
@@ -32,30 +31,36 @@
 
 
 **Date Pattern**
+   - G : Era designator
+   - y : Year
+   - M : Month
+   - w : Week in year
+   - W : Week in Month
+   - D : Day in year
+   - d : Day in month
+   - F : Day of week in month
+   - E : Day in week
+   - H : Hour 0 ~ 23
+   - k : Hour 1 ~ 24
+   - h : Hour 1 ~ 12
+   - m : Minute
+   - s : Second
+   - S : Millisecond
+   - z : Time zone (General)
+   - Z : Time zone (RFC 822)
+   - a : am / pm
 
-   - 예시
-      - 설정 : <pattern name="date">[yyyy.MM.dd hh:mm:ss]</pattern>
-      - 결과 : [2021.09.26 13:09:20]
 
-   - 설정 값
-      - G : Era designator
-      - y : Year
-      - M : Month
-      - w : Week in year
-      - W : Week in Month
-      - D : Day in year
-      - d : Day in month
-      - F : Day of week in month
-      - E : Day in week
-      - H : Hour 0 ~ 23
-      - k : Hour 1 ~ 24
-      - h : Hour 1 ~ 12
-      - m : Minute
-      - s : Second
-      - S : Millisecond
-      - z : Time zone (General)
-      - Z : Time zone (RFC 822)
-      - a : am / pm
+**Example**
+   - Log Level
+      - <logger level="info"> :: info, warn, error and fatal
+      - <logger level="fatal"> :: only fatal
+      - <logger level="(trace|warn)"> :: trace and warn
+      - <logger level="(debug|error|fatal)"> :: debug, error and fatal
+
+**예시**
+
+
 
 MIT License
 Copyright (c) 2021 BOMZ
