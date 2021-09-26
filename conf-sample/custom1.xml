@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<loggers observe="off">
+
+	<!-- 	system logger -->
+	<logger name="root" type="console" level="debug" />
+
+	<!--  user custom logger -->
+	<logger name="myLogger" type="custom" level="debug">
+		<param name="class">example.custom.MyCustomAppender</param>
+		<param name="myName">bomz</param>
+	</logger>
+</loggers>
