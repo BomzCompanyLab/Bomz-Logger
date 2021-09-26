@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+
+<loggers observe="off">
+	<logger name="root" type="console" level="debug" />
+	
+	<logger name="mybatisTest" type="console" level="debug" />
+	
+	<!--  Apache MyBatis Logger Setting -->
+	<logger name="org.apache.ibatis" type="console" level="info" />
+</loggers>
