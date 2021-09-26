@@ -24,7 +24,7 @@
    - TCP
       - 설정된 IP:PORT 로 접속하여 TCP 방식으로 로그 데이터 전송
    - Http 
-      - 지정된 URL 과 Http Method 방식으로 접속하여 로그 데이터 전송
+      - 지정된 URL 과 Http Method (GET or POST) 방식으로 접속하여 로그 데이터 전송
    - Custom
       - 사용자가 직접 구현한 구현체로 로그 데이터 처리
 
@@ -51,13 +51,28 @@
    - a : am / pm
 
 
+**Date Locale**
+   - KO : KOREA
+   - US : USA
+   - JA : JAPAN
+   - ZH : CHINA
+   - FR : FRANCE
+
+
+**Date Time Zone**
+   - Asia/Seoul
+   - America/Los_Angeles
+   - Etc..
+
+
 **Example**
    - Log Level
       - info :: info, warn, error and fatal
       - fatal :: only fatal
       - (trace|warn) :: trace and warn
       - (debug|error|fatal) :: debug, error and fatal
-
+      - (warn) :: only warn
+  
 
 
 
