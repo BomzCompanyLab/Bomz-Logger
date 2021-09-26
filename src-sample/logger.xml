@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<loggers observe="off">
+	<logger name="simple" type="console" level="debug" />
+
+	<logger name="simple_object" type="console" level="info"/>
+</loggers>
