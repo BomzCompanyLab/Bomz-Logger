@@ -6,13 +6,13 @@
 
 > Log Level
 
-    - TRACE
-    - DEBUG
-    - INFO
-    - WARN
-    - ERROR
-    - FATAL
-    - OFF
+   - TRACE
+DEBUG
+INFO
+WARN
+ERROR
+FATAL
+OFF
 
 > Appender
 
