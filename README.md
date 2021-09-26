@@ -1,6 +1,6 @@
 # bomz-logger
 
-> BOMZ Public Project Logger 1.1
+**BOMZ Public Project Logger 1.1**
 
 
 
