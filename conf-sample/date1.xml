@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<loggers observe="off">
+
+	<!-- 
+			Date Pattern Test
+			param list
+				1) date : date pattern
+								y : year
+								M : month
+								d : day
+								a : am or pm
+								h : hour 1~12
+								H : hour 1~24
+								m : minute
+								s : second
+				2) locale : default 'KO'
+	 -->
+
+	<logger name="example.date.DateFormat1" type="console" level="debug">
+		<param name="date">[yyyy-MM-dd HH:mm:ss]</param>
+	</logger>
+	
+	
+	
+	<logger name="dateLog" type="console" level="(debug|info|error)">
+		<param name="date">'Y'yyyy 'M'M 'D'dd 'AT' a hh:mm</param>
+		<param name="locale">US</param>
+	</logger>
+	
+	
+	
+	<logger name="consoleAndFileLog" type="console" level="warn">
+		<param name="date">yy-MM-dd a hh:mm:ss</param>
+	</logger>
+	<logger name="consoleAndFileLog" type="file" level="trace">
+		<param name="date">[yyyy.MM.dd] 'Time' HH:mm:ss</param>
+		<param name="dir">./log/dateFormat.log</param>
+		<param name="size">10</param>
+		<param name="period">HOUR</param>
+	</logger>
+	
+</loggers>
