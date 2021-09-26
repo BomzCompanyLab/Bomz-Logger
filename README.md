@@ -35,14 +35,12 @@
 
 **Date Pattern**
 
-   - 예시)
-
-      설정 : <pattern name="date">[yyyy.MM.dd hh:mm:ss]</pattern>
-
-      결과 : [2021.09.26 13:09:20]
+   - 예시
+      - 설정 : <pattern name="date">[yyyy.MM.dd hh:mm:ss]</pattern>
+      - 결과 : [2021.09.26 13:09:20]
 
    - 설정 값
-      G : Era designator
+      - G : Era designator
 
       y : Year
       
