@@ -7,12 +7,12 @@
 > Log Level
 
    - TRACE
-DEBUG
-INFO
-WARN
-ERROR
-FATAL
-OFF
+   - DEBUG
+   - INFO
+   - WARN
+   - ERROR
+   - FATAL
+   - OFF
 
 > Appender
 
