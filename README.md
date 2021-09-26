@@ -53,7 +53,7 @@
 
 **Example**
    - Log Level
-      - <logger level="info"> :: info, warn, error and fatal
+      - '<logger level="info">' :: info, warn, error and fatal
       - <logger level="fatal"> :: only fatal
       - <logger level="(trace|warn)"> :: trace and warn
       - <logger level="(debug|error|fatal)"> :: debug, error and fatal
