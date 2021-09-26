@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<loggers observe="off">
+
+	<logger name="httpLog" type="console" level="debug">
+		<param name="date">[yyyy-MM-dd HH:mm:ss]</param>
+	</logger>
+	
+	
+	<!--
+		param list
+		1) url 			: servlet , jsp , etc page url 	(required)
+		2) method 	: POST or GET 						(default 'GET')
+		3) id 			: parameter ID 						(default 'logMsg')
+		4) encoding 	: message encoding 				(default 'UTF-8')
+		5) timeout	: connect time out. unit ms	(default '1500')
+		6) poolUse	: thread pool use					(default 'false')
+		7) poolSize	: thread pool size					(default '3')
+	 -->
+	 
+	<logger name="httpLog" type="http" level="trace">
+		<param name="date">[yyyy-MM-dd a hh:mm:ss]</param>
+		<param name="locale">US</param>
+		<param name="url">http://127.0.0.1:8080/web</param>
+	</logger>
+	  <!-- 
+	<logger name="httpLog" type="http" level="trace">
+		<param name="url">http://127.0.0.1:8080/web</param>
+		<param name="method">GET</param>
+		<param name="id">logMsg</param>
+		<param name="encoding">UTF-8</param>
+		<param name="timeout">1500</param>
+		<param name="poolUse">true</param>
+		<param name="poolSize">10</param>
+	</logger>
+	--> 
+	
+</loggers>
