@@ -2,7 +2,7 @@
 
 **BOMZ Public Project Logger 1.1**
 
-자바 기반의 Logger 구현체입니다
+자바 기반의 Logger 구현체
 
 
 **Observe**
